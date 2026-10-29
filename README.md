@@ -18,23 +18,23 @@ Também é possível usar `python3 -m http.server 4173` dentro desta pasta.
 
 - `index.html`: estrutura e conteúdo da página.
 - `styles.css`: cores, fontes, layouts responsivos e carrossel.
-- `script.js`: menu mobile, navegação por teclado, seletor de assunto, troca dos retratos e contato.
+- `script.js`: menu mobile, navegação por teclado, troca dos retratos e mensagem de WhatsApp.
 - `config.js`: destinos oficiais de WhatsApp e avaliações.
 - `assets/`: fotografias WebP, SVGs originais e fontes WOFF2 locais.
 - `vercel.json`: cabeçalhos HTTP para a Vercel.
 
 ## Configurar os canais de contato
 
-Os destinos ficaram vazios conforme solicitado. Edite somente `config.js`:
+O WhatsApp está configurado com o número fornecido pelo cliente: **(61) 3879-7990**. O canal de avaliações continua vazio. Edite somente `config.js`:
 
 ```js
 window.JALES_CONFIG = Object.freeze({
-  whatsapp: "", // país + DDD + número, somente dígitos
+  whatsapp: "556138797990", // país + DDD + número, somente dígitos
   reviewsUrl: "", // URL completa do canal oficial de avaliações
 });
 ```
 
-Quando o WhatsApp estiver definido, o formulário valida os campos e abre uma mensagem preenchida para o usuário confirmar o envio no WhatsApp. Não há banco de dados, armazenamento local de dados pessoais ou serviço de envio de e-mails.
+Quando o WhatsApp estiver definido, o formulário pede somente o nome e abre uma mensagem personalizada para o usuário confirmar o envio no WhatsApp. Não há banco de dados, armazenamento local de dados pessoais ou serviço de envio de e-mails.
 
 Sem número configurado, a página informa que o contato está temporariamente indisponível e que os dados não foram enviados. Sem URL de avaliações, o botão informa que o canal estará disponível em breve.
 
@@ -64,8 +64,7 @@ O arquivo `vercel.json` só é aplicado pela Vercel. O GitHub Pages serve os mes
 - Menu mobile com Escape, estados `aria-expanded` e navegação por teclado.
 - Perguntas frequentes usam `details` e `summary` nativos, inclusive sem JavaScript.
 - O carrossel aceita toque, trackpad, foco por teclado e setas esquerda/direita.
-- O formulário usa validação nativa, consentimento obrigatório e mensagens acessíveis.
-- O assunto usa uma lista personalizada, com suporte a toque, setas, Enter e Escape, sem abrir o seletor nativo do Safari.
+- O formulário pede somente o nome. O botão “Falar no WhatsApp” abre a conversa com o escritório; a pessoa confirma o envio no próprio WhatsApp. Nenhuma mensagem é enviada automaticamente.
 - Os retratos alternam nos mesmos enquadramentos a cada 6 segundos, com transição suave e suspensão fora da tela. A troca automática é desativada quando há preferência por movimento reduzido.
 - A página respeita a preferência por movimento reduzido.
 - Botões têm preenchimento lateral e rotação discreta da seta no hover/foco. A linha do tempo das etapas cresce uma única vez ao entrar em tela, horizontalmente no desktop e verticalmente no mobile.
@@ -73,14 +72,16 @@ O arquivo `vercel.json` só é aplicado pela Vercel. O GitHub Pages serve os mes
 
 ## Créditos e licenças
 
-Marca e retratos fornecidos pelo cliente no Figma. Fotografia de adaptação de prótese: Kampus Production / Pexels, imagem 6111599, sob a licença Pexels. Ícones: Lucide, licença incluída em `assets/LICENSE-Lucide.txt`. Montserrat e Cinzel: SIL Open Font License, arquivos de licença em `assets/fonts/`.
+Marca e retratos fornecidos pelo cliente no Figma. Fotografia de adaptação de prótese: Kampus Production / Pexels, imagem 6111599, sob a licença Pexels. Ícones: Lucide, licença incluída em `assets/LICENSE-Lucide.txt`. Ícone do WhatsApp: Simple Icons, licença CC0 incluída em `assets/LICENSE-Simple-Icons.txt`. Montserrat e Cinzel: SIL Open Font License, arquivos de licença em `assets/fonts/`.
 
 Não foram publicados dados fictícios de contato, endereço ou registro profissional. Antes da publicação definitiva, configure os canais oficiais e confira os dados institucionais que o escritório desejar divulgar.
 
 ## Validação realizada
 
-Conferência visual com os layouts aprovados de 1440 px e 390 px. Testes de navegação, menu mobile, carrossel, perguntas frequentes, consentimento e formulário em Chromium nas larguras 320, 375, 390, 768, 1024, 1440 e 1920 px. Compatibilidade de menu, rolagem horizontal e FAQ também verificada em WebKit nas larguras 390 e 1440 px.
+Conferência visual com os layouts aprovados de 1440 px e 390 px. Testes de navegação, menu mobile, carrossel, perguntas frequentes e formulário em Chromium nas larguras 320, 375, 390, 768, 1024, 1440 e 1920 px. Compatibilidade de menu, rolagem horizontal e FAQ também verificada em WebKit nas larguras 390 e 1440 px.
 
-Não houve imagens ausentes, erros de JavaScript ou requisições externas para renderizar a página. Os canais de contato permanecem sem destino real conforme solicitado; o redirecionamento configurado foi testado com interceptação local, sem enviar mensagens externas.
+Não houve imagens ausentes, erros de JavaScript ou requisições externas para renderizar a página. O canal de avaliações permanece sem destino. O redirecionamento com mensagem personalizada foi verificado com interceptação local, sem enviar mensagens externas.
 
-Na última revisão, o seletor personalizado, os indicadores, o alinhamento das etapas e o formulário foram conferidos em Chromium e WebKit nas larguras 320, 390 e 1440 px. A troca dos retratos e o movimento reduzido também foram verificados.
+Na última revisão, os indicadores e o alinhamento das etapas foram conferidos em Chromium e WebKit nas larguras 320, 390 e 1440 px. A troca dos retratos e o movimento reduzido também foram verificados.
+
+O formulário de nome e WhatsApp foi conferido em Chromium e WebKit, no desktop e no mobile: validação do nome, codificação de acentos no link e ausência de envio quando o número do escritório não está configurado.

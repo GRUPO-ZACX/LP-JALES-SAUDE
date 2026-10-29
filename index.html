@@ -276,10 +276,7 @@
                   loading="lazy"
                 />
                 <div class="card-notch" aria-hidden="true"></div>
-                <a
-                  class="card-link"
-                  href="#contato"
-                  data-subject="Medicamentos e tratamentos"
+                <a class="card-link" href="#contato"
                   >Entenda seu caso <span aria-hidden="true">↗</span></a
                 >
               </article>
@@ -317,10 +314,7 @@
                   loading="lazy"
                 />
                 <div class="card-notch" aria-hidden="true"></div>
-                <a
-                  class="card-link"
-                  href="#contato"
-                  data-subject="Medicamentos e tratamentos"
+                <a class="card-link" href="#contato"
                   >Entenda seu caso <span aria-hidden="true">↗</span></a
                 >
               </article>
@@ -360,10 +354,7 @@
                   loading="lazy"
                 />
                 <div class="card-notch" aria-hidden="true"></div>
-                <a
-                  class="card-link"
-                  href="#contato"
-                  data-subject="Medicamentos e tratamentos"
+                <a class="card-link" href="#contato"
                   >Entenda seu caso <span aria-hidden="true">↗</span></a
                 >
               </article>
@@ -738,105 +729,38 @@
           </div>
           <form class="contact-form" id="contact-form">
             <h3>Converse com a equipe</h3>
-            <p class="form-intro">Deixe seu contato para iniciar a conversa.</p>
-            <label
-              >Seu nome<input
+            <p class="form-intro">
+              Diga seu nome e inicie a conversa pelo WhatsApp.
+            </p>
+            <label for="contact-name"
+              >Seu nome
+              <input
+                id="contact-name"
                 name="name"
                 autocomplete="name"
                 placeholder="Como podemos chamar você?"
                 minlength="2"
                 maxlength="100"
-                required /></label
-            ><label
-              >WhatsApp<input
-                name="phone"
-                type="tel"
-                inputmode="tel"
-                autocomplete="tel"
-                placeholder="DDD + número de telefone"
-                minlength="10"
-                maxlength="22"
                 required
-            /></label>
-            <div class="subject-field">
-              <span id="subject-label" class="field-label"
-                >Qual é a sua situação?</span
-              ><input type="hidden" name="subject" id="subject-value" /><button
-                type="button"
-                id="subject-trigger"
-                role="combobox"
-                aria-haspopup="listbox"
-                aria-expanded="false"
-                aria-controls="subject-options"
-                aria-labelledby="subject-label subject-text"
-              >
-                <span id="subject-text">Selecione o assunto</span
-                ><span class="select-chevron" aria-hidden="true"></span>
-              </button>
-              <ul
-                id="subject-options"
-                role="listbox"
-                aria-labelledby="subject-label"
-                hidden
-              >
-                <li
-                  role="option"
-                  aria-selected="false"
-                  tabindex="-1"
-                  data-value="Planos de saúde: negativas e abusos"
-                >
-                  Planos de saúde: negativas e abusos
-                </li>
-                <li
-                  role="option"
-                  aria-selected="false"
-                  tabindex="-1"
-                  data-value="Medicamentos e tratamentos"
-                >
-                  Medicamentos e tratamentos
-                </li>
-                <li
-                  role="option"
-                  aria-selected="false"
-                  tabindex="-1"
-                  data-value="Próteses, órteses e dispositivos médicos"
-                >
-                  Próteses, órteses e dispositivos médicos
-                </li>
-                <li
-                  role="option"
-                  aria-selected="false"
-                  tabindex="-1"
-                  data-value="Erro médico"
-                >
-                  Erro médico
-                </li>
-                <li
-                  role="option"
-                  aria-selected="false"
-                  tabindex="-1"
-                  data-value="LGPD para clínicas e hospitais"
-                >
-                  LGPD para clínicas e hospitais
-                </li>
-              </ul>
-            </div>
-            <label class="consent"
-              ><input name="consent" type="checkbox" required /><span
-                >Autorizo o uso destes dados para receber o retorno da
-                equipe.</span
-              ></label
-            ><button class="button button-dark" type="submit">
-              <span>Solicitar contato</span
-              ><span class="button-arrow" aria-hidden="true">↗</span>
+              />
+            </label>
+            <button class="button button-dark whatsapp-button" type="submit">
+              <span>Falar no WhatsApp</span>
+              <span class="whatsapp-icon" aria-hidden="true"
+                ><img
+                  src="assets/icon-whatsapp.svg"
+                  width="22"
+                  height="22"
+                  alt=""
+              /></span>
             </button>
             <p class="form-note">
-              Não envie documentos médicos por este formulário.
+              A mensagem será aberta no WhatsApp para você conferir e enviar.
             </p>
             <p class="form-status" id="form-status" role="status" hidden></p>
             <noscript
               ><p>
-                Ative o JavaScript para utilizar o formulário de contato.
+                Ative o JavaScript para preparar sua mensagem no WhatsApp.
               </p></noscript
             >
           </form>

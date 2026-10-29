@@ -54,30 +54,22 @@
         : "smooth",
     });
   });
-  document.querySelectorAll("[data-subject]").forEach((link) =>
-    link.addEventListener("click", () => {
-      setSubject(link.dataset.subject);
-    }),
-  );
-
   const form = document.getElementById("contact-form");
-  const phone = form.elements.phone;
+  const nameInput = form.elements.name;
   const status = document.getElementById("form-status");
-  phone.addEventListener("input", () => phone.setCustomValidity(""));
+  const normalizeName = () => nameInput.value.trim().replace(/\s+/g, " ");
+  const messageFor = (name) =>
+    `Olá! Meu nome é ${name}. Gostaria de atendimento jurídico na área da saúde. Podemos conversar?`;
+  nameInput.addEventListener("input", () => {
+    nameInput.setCustomValidity("");
+    status.hidden = true;
+  });
   form.addEventListener("submit", (event) => {
     event.preventDefault();
-    const digits = phone.value.replace(/\D/g, "");
-    if (digits.length < 10 || digits.length > 15) {
-      phone.setCustomValidity("Informe um telefone válido, com DDD.");
-      phone.reportValidity();
-      return;
-    }
-    if (!form.elements.subject.value) {
-      status.hidden = false;
-      status.textContent = "Selecione o assunto para continuar.";
-      document.getElementById("subject-trigger").focus();
-      return;
-    }
+    const name = normalizeName();
+    nameInput.setCustomValidity(
+      name.length < 2 ? "Informe seu nome para continuar." : "",
+    );
     if (!form.reportValidity()) return;
     const destination = String(config.whatsapp || "").replace(/\D/g, "");
     status.hidden = false;
@@ -86,10 +78,9 @@
         "O contato pelo site está temporariamente indisponível. Seus dados não foram enviados. Tente novamente mais tarde.";
       return;
     }
-    const message = `Olá! Meu nome é ${form.elements.name.value.trim()}. Gostaria de conversar sobre ${form.elements.subject.value}. Meu WhatsApp é ${phone.value.trim()}.`;
-    const url = `https://wa.me/${destination}?text=${encodeURIComponent(message)}`;
+    const url = `https://wa.me/${destination}?text=${encodeURIComponent(messageFor(name))}`;
     status.textContent =
-      "Você será direcionado ao WhatsApp para confirmar o envio da sua mensagem.";
+      "Abrindo o WhatsApp com sua mensagem. Confira o texto e toque em enviar para iniciar a conversa.";
     window.location.assign(url);
   });
   document.getElementById("feedback-button").addEventListener("click", () => {
@@ -155,75 +146,6 @@
     process.classList.add("timeline-visible");
   }
 
-  // Seletor próprio: clique, teclado e leitores de tela usam o mesmo valor.
-  const subjectTrigger = document.getElementById("subject-trigger");
-  const subjectOptions = document.getElementById("subject-options");
-  const subjectItems = [...subjectOptions.querySelectorAll('[role="option"]')];
-  function closeSubjects(focus = false) {
-    subjectOptions.hidden = true;
-    subjectTrigger.setAttribute("aria-expanded", "false");
-    if (focus) subjectTrigger.focus();
-  }
-  function setSubject(value) {
-    form.elements.subject.value = value;
-    document.getElementById("subject-text").textContent = value;
-    subjectTrigger.classList.add("has-value");
-    subjectItems.forEach((item) =>
-      item.setAttribute("aria-selected", String(item.dataset.value === value)),
-    );
-    closeSubjects();
-  }
-  function openSubjects(last = false) {
-    subjectOptions.hidden = false;
-    subjectTrigger.setAttribute("aria-expanded", "true");
-    const selected = subjectItems.find(
-      (item) => item.getAttribute("aria-selected") === "true",
-    );
-    (selected || subjectItems[last ? subjectItems.length - 1 : 0]).focus();
-  }
-  subjectTrigger.addEventListener("click", () =>
-    subjectOptions.hidden ? openSubjects() : closeSubjects(),
-  );
-  subjectTrigger.addEventListener("keydown", (event) => {
-    if (["ArrowDown", "ArrowUp"].includes(event.key)) {
-      event.preventDefault();
-      openSubjects(event.key === "ArrowUp");
-    }
-  });
-  subjectOptions.addEventListener("click", (event) => {
-    const option = event.target.closest('[role="option"]');
-    if (option) {
-      setSubject(option.dataset.value);
-      subjectTrigger.focus();
-    }
-  });
-  subjectOptions.addEventListener("keydown", (event) => {
-    const index = subjectItems.indexOf(document.activeElement);
-    if (["ArrowDown", "ArrowUp", "Home", "End"].includes(event.key)) {
-      event.preventDefault();
-      const next =
-        event.key === "Home"
-          ? 0
-          : event.key === "End"
-            ? subjectItems.length - 1
-            : (index +
-                (event.key === "ArrowDown" ? 1 : -1) +
-                subjectItems.length) %
-              subjectItems.length;
-      subjectItems[next].focus();
-    } else if (["Enter", " "].includes(event.key)) {
-      event.preventDefault();
-      setSubject(subjectItems[index].dataset.value);
-      subjectTrigger.focus();
-    } else if (event.key === "Escape") {
-      event.preventDefault();
-      closeSubjects(true);
-    } else if (event.key === "Tab") closeSubjects();
-  });
-  document.addEventListener("click", (event) => {
-    if (!event.target.closest(".subject-field")) closeSubjects();
-  });
-
   // Duas fotografias nos mesmos enquadramentos, com movimento reduzido.
   const portraits = document.querySelector(".portrait-grid");
   const reducedPhotos = matchMedia("(prefers-reduced-motion:reduce)");
@@ -232,11 +154,7 @@
   function syncPhotos() {
     clearInterval(photoTimer);
     photoTimer = null;
-    if (
-      photosVisible &&
-      !document.hidden &&
-      !reducedPhotos.matches
-    ) {
+    if (photosVisible && !document.hidden && !reducedPhotos.matches) {
       photoTimer = setInterval(() => {
         const swapped = portraits.classList.toggle("is-swapped");
         portraits

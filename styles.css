@@ -934,7 +934,7 @@ h1 {
   line-height: 20px;
   color: var(--secondary);
 }
-.contact-form label:not(.consent) {
+.contact-form label {
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -942,8 +942,7 @@ h1 {
   line-height: 20px;
   font-weight: 500;
 }
-.contact-form input:not([type="checkbox"]),
-.contact-form select {
+.contact-form input {
   display: block;
   width: 100%;
   min-width: 0;
@@ -960,25 +959,6 @@ h1 {
 .contact-form input::placeholder {
   color: var(--secondary);
   opacity: 1;
-}
-.contact-form select:has(option:checked[value=""]) {
-  color: var(--secondary);
-}
-.consent {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  font-size: 11px;
-  line-height: 17px;
-  font-weight: 400;
-  color: var(--secondary);
-}
-.consent input {
-  margin: 0;
-  flex: 0 0 18px;
-  width: 18px;
-  height: 18px;
-  accent-color: var(--forest);
 }
 .contact-form .button {
   width: 100%;
@@ -1554,9 +1534,6 @@ h1 {
     font-size: 32px;
     line-height: 40px;
   }
-  .consent {
-    gap: 8px;
-  }
   .contact-form {
     padding: 20px;
   }
@@ -1978,79 +1955,18 @@ h1 {
   height: 64px;
   font-size: 15px;
 }
-.subject-field {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  width: 100%;
-}
-.field-label {
-  font-size: 13px;
-  line-height: 20px;
-  font-weight: 500;
-}
-#subject-trigger {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 12px;
-  width: 100%;
-  min-height: 54px;
-  text-align: left;
-  padding: 14px 16px;
-  background: var(--surface-muted);
-  border: 1px solid transparent;
-  border-radius: 8px;
-  font-size: 14px;
-  line-height: 21px;
-  color: var(--secondary);
-}
-#subject-trigger.has-value {
-  color: var(--forest);
-}
-#subject-trigger[aria-expanded="true"] {
-  border-color: var(--primary);
-}
-.select-chevron {
-  width: 7px;
-  height: 7px;
-  flex: 0 0 7px;
-  border-right: 1.5px solid var(--forest);
-  border-bottom: 1.5px solid var(--forest);
-  transform: rotate(45deg);
-  margin-right: 3px;
-}
-#subject-trigger[aria-expanded="true"] .select-chevron {
-  transform: rotate(225deg);
-}
-#subject-options {
-  position: absolute;
-  top: calc(100% + 6px);
-  left: 0;
-  right: 0;
-  z-index: 20;
-  max-height: min(280px, 40vh);
-  overflow-y: auto;
-  padding: 6px;
-  background: var(--white);
-  border: 1px solid #00292b22;
-  border-radius: 12px;
-  box-shadow: 0 12px 32px #00292b26;
-}
-#subject-options li {
-  padding: 12px;
-  border-radius: 7px;
-  font-size: 14px;
-  line-height: 21px;
-  cursor: pointer;
-  color: var(--forest);
-}
-#subject-options li:hover,
-#subject-options li:focus,
-#subject-options li[aria-selected="true"] {
+.whatsapp-icon {
+  display: grid;
+  place-items: center;
+  flex: 0 0 42px;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
   background: var(--sage);
-  outline: none;
+}
+.whatsapp-icon img {
+  width: 22px;
+  height: 22px;
 }
 .portrait-grid {
   position: relative;
