@@ -127,21 +127,21 @@
           </h2>
           <ul class="commitment-list">
             <li>
-              <span class="check-circle" aria-hidden="true">✓</span>
+              <span class="check-circle" aria-hidden="true"></span>
               <div>
                 <h3>Análise individual</h3>
                 <p>Cada caso tem uma história.</p>
               </div>
             </li>
             <li>
-              <span class="check-circle" aria-hidden="true">✓</span>
+              <span class="check-circle" aria-hidden="true"></span>
               <div>
                 <h3>Comunicação clara</h3>
                 <p>Você entende cada etapa.</p>
               </div>
             </li>
             <li>
-              <span class="check-circle" aria-hidden="true">✓</span>
+              <span class="check-circle" aria-hidden="true"></span>
               <div>
                 <h3>Sigilo profissional</h3>
                 <p>Respeito às suas informações.</p>
@@ -175,11 +175,56 @@
               </p>
             </div>
             <ul class="plan-list">
-              <li>Liberação de cirurgias negadas</li>
-              <li>Liberação de tratamento home&nbsp;care</li>
-              <li>Cirurgia plástica pós-bariátrica</li>
-              <li>Revisão de reajustes de planos de saúde</li>
-              <li>Cancelamento indevido do plano</li>
+              <li>
+                <img
+                  class="service-list-icon"
+                  src="assets/icon-scissors.svg"
+                  width="24"
+                  height="24"
+                  alt=""
+                  aria-hidden="true"
+                /><span>Liberação de cirurgias negadas</span>
+              </li>
+              <li>
+                <img
+                  class="service-list-icon"
+                  src="assets/icon-house-plus.svg"
+                  width="24"
+                  height="24"
+                  alt=""
+                  aria-hidden="true"
+                /><span>Liberação de tratamento home&nbsp;care</span>
+              </li>
+              <li>
+                <img
+                  class="service-list-icon"
+                  src="assets/icon-user-round.svg"
+                  width="24"
+                  height="24"
+                  alt=""
+                  aria-hidden="true"
+                /><span>Cirurgia plástica pós-bariátrica</span>
+              </li>
+              <li>
+                <img
+                  class="service-list-icon"
+                  src="assets/icon-chart-no-axes-combined.svg"
+                  width="24"
+                  height="24"
+                  alt=""
+                  aria-hidden="true"
+                /><span>Revisão de reajustes de planos de saúde</span>
+              </li>
+              <li>
+                <img
+                  class="service-list-icon"
+                  src="assets/icon-circle-x.svg"
+                  width="24"
+                  height="24"
+                  alt=""
+                  aria-hidden="true"
+                /><span>Cancelamento indevido do plano</span>
+              </li>
             </ul>
           </div>
 
@@ -342,9 +387,36 @@
                 seu tratamento.
               </p>
               <ul class="device-list">
-                <li>Próteses e órteses</li>
-                <li>Stents e válvulas</li>
-                <li>Bomba de insulina</li>
+                <li>
+                  <img
+                    class="service-list-icon"
+                    src="assets/icon-bone.svg"
+                    width="24"
+                    height="24"
+                    alt=""
+                    aria-hidden="true"
+                  /><span>Próteses e órteses</span>
+                </li>
+                <li>
+                  <img
+                    class="service-list-icon"
+                    src="assets/icon-heart-pulse.svg"
+                    width="24"
+                    height="24"
+                    alt=""
+                    aria-hidden="true"
+                  /><span>Stents e válvulas</span>
+                </li>
+                <li>
+                  <img
+                    class="service-list-icon"
+                    src="assets/icon-syringe.svg"
+                    width="24"
+                    height="24"
+                    alt=""
+                    aria-hidden="true"
+                  /><span>Bomba de insulina</span>
+                </li>
               </ul>
             </div>
           </div>
@@ -387,25 +459,58 @@
       <section class="about section" id="sobre" aria-labelledby="about-title">
         <div class="container about-grid">
           <div class="portrait-grid">
-            <img
-              class="portrait-blue"
-              src="assets/portrait-blue.webp"
-              width="624"
-              height="937"
-              alt="Sócia do escritório Jales & Jales, de camisa azul"
-              loading="lazy"
-              decoding="async"
-            />
-            <div class="portrait-right">
+            <button
+              type="button"
+              class="portrait-toggle"
+              aria-label="Pausar troca de fotos"
+              aria-pressed="false"
+              hidden
+            >
+              Ⅱ
+            </button>
+            <div
+              class="portrait-slot portrait-large"
+              role="img"
+              aria-label="Sócia de camisa azul"
+            >
               <img
-                class="portrait-coral"
+                class="photo-front"
+                src="assets/portrait-blue.webp"
+                alt=""
+                aria-hidden="true"
+                loading="lazy"
+                decoding="async"
+              /><img
+                class="photo-back"
                 src="assets/portrait-coral.webp"
-                width="464"
-                height="696"
-                alt="Sócia do escritório Jales & Jales, de blazer coral"
+                alt=""
+                aria-hidden="true"
                 loading="lazy"
                 decoding="async"
               />
+            </div>
+            <div class="portrait-right">
+              <div
+                class="portrait-slot portrait-small"
+                role="img"
+                aria-label="Sócia de blazer coral"
+              >
+                <img
+                  class="photo-front"
+                  src="assets/portrait-coral.webp"
+                  alt=""
+                  aria-hidden="true"
+                  loading="lazy"
+                  decoding="async"
+                /><img
+                  class="photo-back"
+                  src="assets/portrait-blue.webp"
+                  alt=""
+                  aria-hidden="true"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
               <div class="portrait-brand">
                 <img
                   src="assets/logo.webp"
@@ -418,7 +523,6 @@
             </div>
           </div>
           <div class="about-copy">
-            <p class="eyebrow">QUEM ESTÁ AO SEU LADO</p>
             <h2 class="serif" id="about-title">
               Atuação firme.<br />Conversa clara.
             </h2>
@@ -444,7 +548,7 @@
         aria-labelledby="process-title"
       >
         <div class="container process-stack">
-          <h2 id="process-title">Você entende cada etapa.</h2>
+          <h2 id="process-title">Você <strong>entende</strong> cada etapa.</h2>
           <ol class="steps">
             <li>
               <span class="step-number" aria-hidden="true">01</span>
@@ -487,21 +591,21 @@
           </div>
           <ul class="document-list">
             <li>
-              <span class="check-circle" aria-hidden="true">✓</span>
+              <span class="check-circle" aria-hidden="true"></span>
               <div>
                 <h3>Prescrição e relatório médico</h3>
                 <p>Com a indicação do tratamento e a descrição clínica.</p>
               </div>
             </li>
             <li>
-              <span class="check-circle" aria-hidden="true">✓</span>
+              <span class="check-circle" aria-hidden="true"></span>
               <div>
                 <h3>Negativa e protocolos</h3>
                 <p>Resposta da operadora e registros de atendimento.</p>
               </div>
             </li>
             <li>
-              <span class="check-circle" aria-hidden="true">✓</span>
+              <span class="check-circle" aria-hidden="true"></span>
               <div>
                 <h3>Carteirinha e contrato do plano</h3>
                 <p>
@@ -510,7 +614,7 @@
               </div>
             </li>
             <li>
-              <span class="check-circle" aria-hidden="true">✓</span>
+              <span class="check-circle" aria-hidden="true"></span>
               <div>
                 <h3>Boletos e comprovantes</h3>
                 <p>Quando a questão envolver reajuste ou cobrança.</p>
@@ -661,17 +765,72 @@
                 placeholder="DDD + número de telefone"
                 minlength="10"
                 maxlength="22"
-                required /></label
-            ><label
-              >Qual é a sua situação?<select name="subject" required>
-                <option value="" disabled selected>Selecione o assunto</option>
-                <option>Planos de saúde: negativas e abusos</option>
-                <option>Medicamentos e tratamentos</option>
-                <option>Próteses, órteses e dispositivos médicos</option>
-                <option>Erro médico</option>
-                <option>LGPD para clínicas e hospitais</option>
-              </select></label
-            ><label class="consent"
+                required
+            /></label>
+            <div class="subject-field">
+              <span id="subject-label" class="field-label"
+                >Qual é a sua situação?</span
+              ><input type="hidden" name="subject" id="subject-value" /><button
+                type="button"
+                id="subject-trigger"
+                role="combobox"
+                aria-haspopup="listbox"
+                aria-expanded="false"
+                aria-controls="subject-options"
+                aria-labelledby="subject-label subject-text"
+              >
+                <span id="subject-text">Selecione o assunto</span
+                ><span class="select-chevron" aria-hidden="true"></span>
+              </button>
+              <ul
+                id="subject-options"
+                role="listbox"
+                aria-labelledby="subject-label"
+                hidden
+              >
+                <li
+                  role="option"
+                  aria-selected="false"
+                  tabindex="-1"
+                  data-value="Planos de saúde: negativas e abusos"
+                >
+                  Planos de saúde: negativas e abusos
+                </li>
+                <li
+                  role="option"
+                  aria-selected="false"
+                  tabindex="-1"
+                  data-value="Medicamentos e tratamentos"
+                >
+                  Medicamentos e tratamentos
+                </li>
+                <li
+                  role="option"
+                  aria-selected="false"
+                  tabindex="-1"
+                  data-value="Próteses, órteses e dispositivos médicos"
+                >
+                  Próteses, órteses e dispositivos médicos
+                </li>
+                <li
+                  role="option"
+                  aria-selected="false"
+                  tabindex="-1"
+                  data-value="Erro médico"
+                >
+                  Erro médico
+                </li>
+                <li
+                  role="option"
+                  aria-selected="false"
+                  tabindex="-1"
+                  data-value="LGPD para clínicas e hospitais"
+                >
+                  LGPD para clínicas e hospitais
+                </li>
+              </ul>
+            </div>
+            <label class="consent"
               ><input name="consent" type="checkbox" required /><span
                 >Autorizo o uso destes dados para receber o retorno da
                 equipe.</span

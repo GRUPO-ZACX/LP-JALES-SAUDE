@@ -56,7 +56,7 @@
   });
   document.querySelectorAll("[data-subject]").forEach((link) =>
     link.addEventListener("click", () => {
-      document.querySelector('[name="subject"]').value = link.dataset.subject;
+      setSubject(link.dataset.subject);
     }),
   );
 
@@ -70,6 +70,12 @@
     if (digits.length < 10 || digits.length > 15) {
       phone.setCustomValidity("Informe um telefone válido, com DDD.");
       phone.reportValidity();
+      return;
+    }
+    if (!form.elements.subject.value) {
+      status.hidden = false;
+      status.textContent = "Selecione o assunto para continuar.";
+      document.getElementById("subject-trigger").focus();
       return;
     }
     if (!form.reportValidity()) return;
@@ -148,4 +154,132 @@
   } else {
     process.classList.add("timeline-visible");
   }
+
+  // Seletor próprio: clique, teclado e leitores de tela usam o mesmo valor.
+  const subjectTrigger = document.getElementById("subject-trigger");
+  const subjectOptions = document.getElementById("subject-options");
+  const subjectItems = [...subjectOptions.querySelectorAll('[role="option"]')];
+  function closeSubjects(focus = false) {
+    subjectOptions.hidden = true;
+    subjectTrigger.setAttribute("aria-expanded", "false");
+    if (focus) subjectTrigger.focus();
+  }
+  function setSubject(value) {
+    form.elements.subject.value = value;
+    document.getElementById("subject-text").textContent = value;
+    subjectTrigger.classList.add("has-value");
+    subjectItems.forEach((item) =>
+      item.setAttribute("aria-selected", String(item.dataset.value === value)),
+    );
+    closeSubjects();
+  }
+  function openSubjects(last = false) {
+    subjectOptions.hidden = false;
+    subjectTrigger.setAttribute("aria-expanded", "true");
+    const selected = subjectItems.find(
+      (item) => item.getAttribute("aria-selected") === "true",
+    );
+    (selected || subjectItems[last ? subjectItems.length - 1 : 0]).focus();
+  }
+  subjectTrigger.addEventListener("click", () =>
+    subjectOptions.hidden ? openSubjects() : closeSubjects(),
+  );
+  subjectTrigger.addEventListener("keydown", (event) => {
+    if (["ArrowDown", "ArrowUp"].includes(event.key)) {
+      event.preventDefault();
+      openSubjects(event.key === "ArrowUp");
+    }
+  });
+  subjectOptions.addEventListener("click", (event) => {
+    const option = event.target.closest('[role="option"]');
+    if (option) {
+      setSubject(option.dataset.value);
+      subjectTrigger.focus();
+    }
+  });
+  subjectOptions.addEventListener("keydown", (event) => {
+    const index = subjectItems.indexOf(document.activeElement);
+    if (["ArrowDown", "ArrowUp", "Home", "End"].includes(event.key)) {
+      event.preventDefault();
+      const next =
+        event.key === "Home"
+          ? 0
+          : event.key === "End"
+            ? subjectItems.length - 1
+            : (index +
+                (event.key === "ArrowDown" ? 1 : -1) +
+                subjectItems.length) %
+              subjectItems.length;
+      subjectItems[next].focus();
+    } else if (["Enter", " "].includes(event.key)) {
+      event.preventDefault();
+      setSubject(subjectItems[index].dataset.value);
+      subjectTrigger.focus();
+    } else if (event.key === "Escape") {
+      event.preventDefault();
+      closeSubjects(true);
+    } else if (event.key === "Tab") closeSubjects();
+  });
+  document.addEventListener("click", (event) => {
+    if (!event.target.closest(".subject-field")) closeSubjects();
+  });
+
+  // Duas fotografias nos mesmos enquadramentos, com pausa e movimento reduzido.
+  const portraits = document.querySelector(".portrait-grid");
+  const portraitToggle = portraits.querySelector(".portrait-toggle");
+  const reducedPhotos = matchMedia("(prefers-reduced-motion:reduce)");
+  let photoTimer = null,
+    photosVisible = false,
+    photosPaused = false;
+  function syncPhotos() {
+    clearInterval(photoTimer);
+    photoTimer = null;
+    portraitToggle.hidden = reducedPhotos.matches;
+    if (
+      photosVisible &&
+      !photosPaused &&
+      !document.hidden &&
+      !reducedPhotos.matches
+    ) {
+      photoTimer = setInterval(() => {
+        const swapped = portraits.classList.toggle("is-swapped");
+        portraits
+          .querySelector(".portrait-large")
+          .setAttribute(
+            "aria-label",
+            swapped ? "Sócia de blazer coral" : "Sócia de camisa azul",
+          );
+        portraits
+          .querySelector(".portrait-small")
+          .setAttribute(
+            "aria-label",
+            swapped ? "Sócia de camisa azul" : "Sócia de blazer coral",
+          );
+      }, 8500);
+    }
+  }
+  portraitToggle.addEventListener("click", () => {
+    photosPaused = !photosPaused;
+    portraitToggle.setAttribute("aria-pressed", String(photosPaused));
+    portraitToggle.setAttribute(
+      "aria-label",
+      photosPaused ? "Retomar troca de fotos" : "Pausar troca de fotos",
+    );
+    portraitToggle.textContent = photosPaused ? "▶" : "Ⅱ";
+    syncPhotos();
+  });
+  if ("IntersectionObserver" in window) {
+    new IntersectionObserver(
+      (entries) => {
+        photosVisible = entries[0].isIntersecting;
+        syncPhotos();
+      },
+      { threshold: 0.25 },
+    ).observe(portraits);
+  } else {
+    photosVisible = true;
+    syncPhotos();
+  }
+  document.addEventListener("visibilitychange", syncPhotos);
+  reducedPhotos.addEventListener("change", syncPhotos);
 })();
