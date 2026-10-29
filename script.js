@@ -224,20 +224,16 @@
     if (!event.target.closest(".subject-field")) closeSubjects();
   });
 
-  // Duas fotografias nos mesmos enquadramentos, com pausa e movimento reduzido.
+  // Duas fotografias nos mesmos enquadramentos, com movimento reduzido.
   const portraits = document.querySelector(".portrait-grid");
-  const portraitToggle = portraits.querySelector(".portrait-toggle");
   const reducedPhotos = matchMedia("(prefers-reduced-motion:reduce)");
   let photoTimer = null,
-    photosVisible = false,
-    photosPaused = false;
+    photosVisible = false;
   function syncPhotos() {
     clearInterval(photoTimer);
     photoTimer = null;
-    portraitToggle.hidden = reducedPhotos.matches;
     if (
       photosVisible &&
-      !photosPaused &&
       !document.hidden &&
       !reducedPhotos.matches
     ) {
@@ -255,19 +251,9 @@
             "aria-label",
             swapped ? "Sócia de camisa azul" : "Sócia de blazer coral",
           );
-      }, 8500);
+      }, 6000);
     }
   }
-  portraitToggle.addEventListener("click", () => {
-    photosPaused = !photosPaused;
-    portraitToggle.setAttribute("aria-pressed", String(photosPaused));
-    portraitToggle.setAttribute(
-      "aria-label",
-      photosPaused ? "Retomar troca de fotos" : "Pausar troca de fotos",
-    );
-    portraitToggle.textContent = photosPaused ? "▶" : "Ⅱ";
-    syncPhotos();
-  });
   if ("IntersectionObserver" in window) {
     new IntersectionObserver(
       (entries) => {

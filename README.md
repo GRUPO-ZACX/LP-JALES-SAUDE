@@ -66,7 +66,7 @@ O arquivo `vercel.json` só é aplicado pela Vercel. O GitHub Pages serve os mes
 - O carrossel aceita toque, trackpad, foco por teclado e setas esquerda/direita.
 - O formulário usa validação nativa, consentimento obrigatório e mensagens acessíveis.
 - O assunto usa uma lista personalizada, com suporte a toque, setas, Enter e Escape, sem abrir o seletor nativo do Safari.
-- Os retratos alternam nos mesmos enquadramentos a cada 8,5 segundos, com transição suave, botão de pausa e suspensão fora da tela. A troca automática é desativada quando há preferência por movimento reduzido.
+- Os retratos alternam nos mesmos enquadramentos a cada 6 segundos, com transição suave e suspensão fora da tela. A troca automática é desativada quando há preferência por movimento reduzido.
 - A página respeita a preferência por movimento reduzido.
 - Botões têm preenchimento lateral e rotação discreta da seta no hover/foco. A linha do tempo das etapas cresce uma única vez ao entrar em tela, horizontalmente no desktop e verticalmente no mobile.
 - Sem trackers, bibliotecas externas, fontes remotas ou animações pesadas.
@@ -83,4 +83,4 @@ Conferência visual com os layouts aprovados de 1440 px e 390 px. Testes de nave
 
 Não houve imagens ausentes, erros de JavaScript ou requisições externas para renderizar a página. Os canais de contato permanecem sem destino real conforme solicitado; o redirecionamento configurado foi testado com interceptação local, sem enviar mensagens externas.
 
-Na última revisão, o seletor personalizado, os indicadores, o alinhamento das etapas e o formulário foram conferidos em Chromium e WebKit nas larguras 320, 390 e 1440 px. A troca dos retratos, a pausa e o movimento reduzido também foram verificados.
+Na última revisão, o seletor personalizado, os indicadores, o alinhamento das etapas e o formulário foram conferidos em Chromium e WebKit nas larguras 320, 390 e 1440 px. A troca dos retratos e o movimento reduzido também foram verificados.
