@@ -1,0 +1,751 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#00292b" />
+    <meta
+      name="description"
+      content="Jales & Jales · Advogados Associados. Orientação em Direito da Saúde: planos de saúde, medicamentos, tratamentos, próteses, erro médico e LGPD."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Jales & Jales | Direito da Saúde" />
+    <meta
+      property="og:description"
+      content="Sua saúde. Seus direitos. Entenda os caminhos jurídicos para o seu caso."
+    />
+    <title>Jales & Jales | Direito da Saúde</title>
+    <link rel="icon" href="assets/shield.webp" type="image/webp" />
+    <link
+      rel="preload"
+      href="assets/fonts/montserrat-400.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="assets/fonts/cinzel-400.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="assets/hero.webp"
+      as="image"
+      fetchpriority="high"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="config.js" defer></script>
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#atuacao">Ir para o conteúdo</a>
+    <header class="hero" id="inicio">
+      <img
+        class="hero-photo"
+        src="assets/hero.webp"
+        width="1920"
+        height="1001"
+        alt="As duas sócias do escritório Jales & Jales"
+        fetchpriority="high"
+        decoding="async"
+      />
+      <div class="hero-shade" aria-hidden="true"></div>
+      <div class="container hero-inner">
+        <div class="topbar">
+          <a class="brand" href="#inicio" aria-label="Jales & Jales — início"
+            ><img
+              src="assets/logo.webp"
+              width="190"
+              height="86"
+              alt="Jales & Jales — Advogados Associados"
+          /></a>
+          <nav class="desktop-nav" aria-label="Navegação principal">
+            <a href="#atuacao">Atuação</a><a href="#sobre">Sobre nós</a
+            ><a href="#como-funciona">Como funciona</a
+            ><a href="#duvidas">Dúvidas</a>
+          </nav>
+          <a class="button top-contact" href="#contato"
+            ><span>Fale com a equipe</span
+            ><span class="button-arrow" aria-hidden="true">↗</span></a
+          >
+          <button
+            class="menu-toggle"
+            type="button"
+            aria-label="Abrir navegação"
+            aria-controls="mobile-menu"
+            aria-expanded="false"
+          >
+            <span></span><span></span>
+          </button>
+        </div>
+        <nav
+          class="mobile-menu"
+          id="mobile-menu"
+          aria-label="Navegação mobile"
+          hidden
+        >
+          <div class="menu-heading">
+            <strong>Navegação</strong
+            ><button
+              class="menu-close"
+              type="button"
+              aria-label="Fechar navegação"
+            >
+              ×
+            </button>
+          </div>
+          <a href="#atuacao">Atuação</a><a href="#sobre">Sobre nós</a
+          ><a href="#como-funciona">Como funciona</a
+          ><a href="#duvidas">Dúvidas</a><a href="#contato">Contato</a>
+        </nav>
+        <div class="hero-content">
+          <p class="eyebrow">ADVOCACIA EM DIREITO DA SAÚDE</p>
+          <h1>Sua saúde.<br />Seus direitos.</h1>
+          <p class="hero-description">
+            Planos de saúde, SUS, tratamentos e erro médico. Entenda os caminhos
+            jurídicos para o seu caso.
+          </p>
+          <div class="hero-actions">
+            <a class="button" href="#contato"
+              ><span>Conversar com a equipe</span
+              ><span class="button-arrow" aria-hidden="true">↗</span></a
+            ><a class="text-link" href="#atuacao"
+              >Ver áreas de atuação <span aria-hidden="true">↗</span></a
+            >
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="commitments" aria-labelledby="commitments-title">
+        <div class="container commitments-grid">
+          <h2 class="serif" id="commitments-title">
+            Clareza também<br />é cuidado.
+          </h2>
+          <ul class="commitment-list">
+            <li>
+              <span class="check-circle" aria-hidden="true">✓</span>
+              <div>
+                <h3>Análise individual</h3>
+                <p>Cada caso tem uma história.</p>
+              </div>
+            </li>
+            <li>
+              <span class="check-circle" aria-hidden="true">✓</span>
+              <div>
+                <h3>Comunicação clara</h3>
+                <p>Você entende cada etapa.</p>
+              </div>
+            </li>
+            <li>
+              <span class="check-circle" aria-hidden="true">✓</span>
+              <div>
+                <h3>Sigilo profissional</h3>
+                <p>Respeito às suas informações.</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section
+        class="services section"
+        id="atuacao"
+        aria-label="Áreas de atuação"
+      >
+        <div class="container services-stack">
+          <div class="plans">
+            <p class="eyebrow">ÁREAS DE ATUAÇÃO</p>
+            <div class="section-intro">
+              <h2 class="icon-heading">
+                <img
+                  src="assets/icon-shield-check.svg"
+                  width="24"
+                  height="24"
+                  alt=""
+                  aria-hidden="true"
+                /><span>Planos de saúde: negativas e abusos</span>
+              </h2>
+              <p>
+                Atuação diante de recusas de cobertura, aumentos e cancelamentos
+                indevidos.
+              </p>
+            </div>
+            <ul class="plan-list">
+              <li>Liberação de cirurgias negadas</li>
+              <li>Liberação de tratamento home care</li>
+              <li>Cirurgia plástica pós-bariátrica</li>
+              <li>Revisão de reajustes de planos de saúde</li>
+              <li>Cancelamento indevido do plano</li>
+            </ul>
+          </div>
+
+          <div class="treatments" aria-labelledby="treatments-title">
+            <div class="section-intro">
+              <h2 id="treatments-title">Medicamentos e tratamentos</h2>
+              <p>
+                Apoio jurídico diante de negativas de medicamentos e
+                dificuldades de acesso a tratamentos.
+              </p>
+            </div>
+            <div
+              class="treatment-cards"
+              role="region"
+              aria-label="Tratamentos — deslize para ver os três cards"
+              tabindex="0"
+            >
+              <article
+                class="treatment-card card-light"
+                aria-labelledby="medication-title"
+              >
+                <div class="card-heading">
+                  <img
+                    src="assets/icon-pill.svg"
+                    width="24"
+                    height="24"
+                    alt=""
+                    aria-hidden="true"
+                  />
+                  <h3 id="medication-title">Medicamentos<br />negados</h3>
+                </div>
+                <p>Busca de fornecimento pelo SUS e pelos planos de saúde.</p>
+                <img
+                  class="arc arc-outer"
+                  src="assets/arc-outer-light.svg"
+                  width="260"
+                  height="260"
+                  alt=""
+                  aria-hidden="true"
+                  loading="lazy"
+                />
+                <img
+                  class="arc arc-inner"
+                  src="assets/arc-inner-light.svg"
+                  width="188"
+                  height="188"
+                  alt=""
+                  aria-hidden="true"
+                  loading="lazy"
+                />
+                <div class="card-notch" aria-hidden="true"></div>
+                <a
+                  class="card-link"
+                  href="#contato"
+                  data-subject="Medicamentos e tratamentos"
+                  >Entenda seu caso <span aria-hidden="true">↗</span></a
+                >
+              </article>
+              <article
+                class="treatment-card card-sage"
+                aria-labelledby="autism-title"
+              >
+                <div class="card-heading">
+                  <img
+                    src="assets/icon-hand-heart.svg"
+                    width="24"
+                    height="24"
+                    alt=""
+                    aria-hidden="true"
+                  />
+                  <h3 id="autism-title">Tratamentos para<br />autismo (TEA)</h3>
+                </div>
+                <p>Orientação jurídica para acesso ao tratamento indicado.</p>
+                <img
+                  class="arc arc-outer"
+                  src="assets/arc-outer-green.svg"
+                  width="260"
+                  height="260"
+                  alt=""
+                  aria-hidden="true"
+                  loading="lazy"
+                />
+                <img
+                  class="arc arc-inner"
+                  src="assets/arc-inner-ivory.svg"
+                  width="188"
+                  height="188"
+                  alt=""
+                  aria-hidden="true"
+                  loading="lazy"
+                />
+                <div class="card-notch" aria-hidden="true"></div>
+                <a
+                  class="card-link"
+                  href="#contato"
+                  data-subject="Medicamentos e tratamentos"
+                  >Entenda seu caso <span aria-hidden="true">↗</span></a
+                >
+              </article>
+              <article
+                class="treatment-card card-dark"
+                aria-labelledby="sclerosis-title"
+              >
+                <div class="card-heading">
+                  <img
+                    src="assets/icon-brain.svg"
+                    width="24"
+                    height="24"
+                    alt=""
+                    aria-hidden="true"
+                  />
+                  <h3 id="sclerosis-title">
+                    Tratamento para<br />esclerose múltipla
+                  </h3>
+                </div>
+                <p>Atuação para obtenção do tratamento prescrito.</p>
+                <img
+                  class="arc arc-outer"
+                  src="assets/arc-outer-green.svg"
+                  width="260"
+                  height="260"
+                  alt=""
+                  aria-hidden="true"
+                  loading="lazy"
+                />
+                <img
+                  class="arc arc-inner"
+                  src="assets/arc-inner-sage.svg"
+                  width="188"
+                  height="188"
+                  alt=""
+                  aria-hidden="true"
+                  loading="lazy"
+                />
+                <div class="card-notch" aria-hidden="true"></div>
+                <a
+                  class="card-link"
+                  href="#contato"
+                  data-subject="Medicamentos e tratamentos"
+                  >Entenda seu caso <span aria-hidden="true">↗</span></a
+                >
+              </article>
+            </div>
+          </div>
+
+          <div class="devices">
+            <img
+              class="device-photo"
+              src="assets/prosthesis.webp"
+              width="1296"
+              height="864"
+              alt="Profissional de reabilitação auxiliando uma pessoa na adaptação de uma prótese de perna"
+              loading="lazy"
+              decoding="async"
+            />
+            <div class="device-copy">
+              <h2>Próteses, órteses e<br />dispositivos médicos</h2>
+              <p>
+                Atuação jurídica para obtenção dos recursos prescritos para o
+                seu tratamento.
+              </p>
+              <ul class="device-list">
+                <li>Próteses e órteses</li>
+                <li>Stents e válvulas</li>
+                <li>Bomba de insulina</li>
+              </ul>
+            </div>
+          </div>
+          <div class="additional-services">
+            <article>
+              <img
+                src="assets/icon-scale.svg"
+                width="24"
+                height="24"
+                alt=""
+                aria-hidden="true"
+              />
+              <h2>Erro médico</h2>
+              <p>
+                Análise do caso e atuação para responsabilização por erro
+                médico.
+              </p>
+            </article>
+            <article>
+              <img
+                src="assets/icon-hospital.svg"
+                width="24"
+                height="24"
+                alt=""
+                aria-hidden="true"
+              />
+              <h2>Para clínicas e hospitais</h2>
+              <p>Implantação da LGPD em estabelecimentos de saúde.</p>
+            </article>
+          </div>
+          <a class="button service-contact" href="#contato"
+            ><span>Conversar com a equipe</span
+            ><span class="button-arrow" aria-hidden="true">↗</span></a
+          >
+        </div>
+      </section>
+
+      <section class="about section" id="sobre" aria-labelledby="about-title">
+        <div class="container about-grid">
+          <div class="portrait-grid">
+            <img
+              class="portrait-blue"
+              src="assets/portrait-blue.webp"
+              width="624"
+              height="937"
+              alt="Sócia do escritório Jales & Jales, de camisa azul"
+              loading="lazy"
+              decoding="async"
+            />
+            <div class="portrait-right">
+              <img
+                class="portrait-coral"
+                src="assets/portrait-coral.webp"
+                width="464"
+                height="696"
+                alt="Sócia do escritório Jales & Jales, de blazer coral"
+                loading="lazy"
+                decoding="async"
+              />
+              <div class="portrait-brand">
+                <img
+                  src="assets/logo.webp"
+                  width="180"
+                  height="82"
+                  alt="Jales & Jales — Advogados Associados"
+                  loading="lazy"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="about-copy">
+            <p class="eyebrow">QUEM ESTÁ AO SEU LADO</p>
+            <h2 class="serif" id="about-title">
+              Atuação firme.<br />Conversa clara.
+            </h2>
+            <p>
+              Um problema de saúde já exige muito de você e da sua família. A
+              orientação jurídica precisa trazer clareza sobre o que aconteceu e
+              o que pode ser feito.
+            </p>
+            <p>
+              Analisamos cada situação com atenção à história do paciente, à
+              documentação médica e às regras aplicáveis.
+            </p>
+            <a class="text-link" href="#como-funciona"
+              >Como funciona o atendimento <span aria-hidden="true">↗</span></a
+            >
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="process section"
+        id="como-funciona"
+        aria-labelledby="process-title"
+      >
+        <div class="container process-stack">
+          <p class="eyebrow">COMO FUNCIONA</p>
+          <h2 id="process-title">Você entende cada etapa.</h2>
+          <ol class="steps">
+            <li>
+              <span class="step-number" aria-hidden="true">01</span>
+              <h3>Conte o que aconteceu</h3>
+              <p>
+                Compartilhe as principais informações sobre a situação que você
+                está vivendo.
+              </p>
+            </li>
+            <li>
+              <span class="step-number" aria-hidden="true">02</span>
+              <h3>Entenda a análise</h3>
+              <p>
+                A equipe examina os documentos, esclarece dúvidas e explica as
+                possibilidades jurídicas.
+              </p>
+            </li>
+            <li>
+              <span class="step-number" aria-hidden="true">03</span>
+              <h3>Defina os próximos passos</h3>
+              <p>
+                Com a orientação apresentada, você compreende o caminho proposto
+                e como será o acompanhamento.
+              </p>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="preparation" aria-labelledby="preparation-title">
+        <div class="container preparation-grid">
+          <div class="preparation-copy">
+            <p class="eyebrow">PARA COMEÇAR</p>
+            <h2 class="serif" id="preparation-title">
+              Separe o que<br />você já tem.
+            </h2>
+            <p>
+              Os documentos ajudam a compreender a situação. A equipe orienta o
+              que pode ser necessário complementar.
+            </p>
+          </div>
+          <ul class="document-list">
+            <li>
+              <span class="check-circle" aria-hidden="true">✓</span>
+              <div>
+                <h3>Prescrição e relatório médico</h3>
+                <p>Com a indicação do tratamento e a descrição clínica.</p>
+              </div>
+            </li>
+            <li>
+              <span class="check-circle" aria-hidden="true">✓</span>
+              <div>
+                <h3>Negativa e protocolos</h3>
+                <p>Resposta da operadora e registros de atendimento.</p>
+              </div>
+            </li>
+            <li>
+              <span class="check-circle" aria-hidden="true">✓</span>
+              <div>
+                <h3>Carteirinha e contrato do plano</h3>
+                <p>
+                  Para identificar a modalidade e as condições da cobertura.
+                </p>
+              </div>
+            </li>
+            <li>
+              <span class="check-circle" aria-hidden="true">✓</span>
+              <div>
+                <h3>Boletos e comprovantes</h3>
+                <p>Quando a questão envolver reajuste ou cobrança.</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="faq section" id="duvidas" aria-labelledby="faq-title">
+        <div class="container faq-grid">
+          <div class="faq-intro">
+            <p class="eyebrow">PERGUNTAS FREQUENTES</p>
+            <h2 id="faq-title">Respostas para<br />as suas dúvidas.</h2>
+            <p>
+              Informação clara para você chegar à conversa com mais segurança.
+            </p>
+          </div>
+          <div class="questions">
+            <details open>
+              <summary>
+                A negativa do plano significa que não há mais o que fazer?<span
+                  aria-hidden="true"
+                  class="faq-symbol"
+                ></span>
+              </summary>
+              <p>
+                Não necessariamente. É preciso analisar o motivo informado pela
+                operadora, a cobertura contratada, a documentação médica e os
+                critérios aplicáveis ao tratamento solicitado.
+              </p>
+            </details>
+            <details>
+              <summary>
+                E se a negativa foi informada apenas por telefone?<span
+                  aria-hidden="true"
+                  class="faq-symbol"
+                ></span>
+              </summary>
+              <p>
+                Guarde o protocolo e solicite a justificativa por escrito. Ela
+                ajuda a compreender a posição da operadora e a avaliar os
+                próximos passos.
+              </p>
+            </details>
+            <details>
+              <summary>
+                Preciso entrar com uma ação judicial?<span
+                  aria-hidden="true"
+                  class="faq-symbol"
+                ></span>
+              </summary>
+              <p>
+                Nem sempre. Conforme a situação, podem ser consideradas medidas
+                administrativas ou judiciais. A análise leva em conta os
+                documentos e a eventual urgência do caso.
+              </p>
+            </details>
+            <details>
+              <summary>
+                A prescrição médica garante a cobertura?<span
+                  aria-hidden="true"
+                  class="faq-symbol"
+                ></span>
+              </summary>
+              <p>
+                Não automaticamente. A prescrição é importante, mas a avaliação
+                também considera o contrato, a regulamentação e os requisitos
+                específicos do pedido.
+              </p>
+            </details>
+            <details>
+              <summary>
+                É possível analisar o aumento da mensalidade?<span
+                  aria-hidden="true"
+                  class="faq-symbol"
+                ></span>
+              </summary>
+              <p>
+                Sim. A avaliação considera o tipo de plano, o contrato, o
+                histórico dos reajustes e as informações da operadora. As regras
+                variam entre planos individuais, familiares e coletivos.
+              </p>
+            </details>
+            <details>
+              <summary>
+                Quanto tempo uma medida jurídica pode levar?<span
+                  aria-hidden="true"
+                  class="faq-symbol"
+                ></span>
+              </summary>
+              <p>
+                O prazo depende do caso, dos documentos e da análise dos órgãos
+                responsáveis. Em situações urgentes, o relatório médico deve
+                explicar os riscos da demora. Não é possível garantir prazo de
+                decisão.
+              </p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="contact section"
+        id="contato"
+        aria-labelledby="contact-title"
+      >
+        <div class="container contact-grid">
+          <div class="contact-copy">
+            <p class="eyebrow">VAMOS CONVERSAR</p>
+            <h2 class="serif" id="contact-title">
+              Vamos olhar<br /><span>para o seu caso</span><br />com atenção.
+            </h2>
+            <p>
+              Conte o que aconteceu. A equipe explica como funciona a análise
+              jurídica e quais informações serão necessárias.
+            </p>
+            <div class="privacy-note">
+              <img
+                src="assets/shield.webp"
+                width="32"
+                height="35"
+                alt=""
+                aria-hidden="true"
+                loading="lazy"
+              />
+              <p>
+                Escuta atenta. Clareza nas orientações.<br />Respeito à sua
+                privacidade.
+              </p>
+            </div>
+          </div>
+          <form class="contact-form" id="contact-form">
+            <h3>Converse com a equipe</h3>
+            <p class="form-intro">Deixe seu contato para iniciar a conversa.</p>
+            <label
+              >Seu nome<input
+                name="name"
+                autocomplete="name"
+                placeholder="Como podemos chamar você?"
+                minlength="2"
+                maxlength="100"
+                required /></label
+            ><label
+              >WhatsApp<input
+                name="phone"
+                type="tel"
+                inputmode="tel"
+                autocomplete="tel"
+                placeholder="DDD + número de telefone"
+                minlength="10"
+                maxlength="22"
+                required /></label
+            ><label
+              >Qual é a sua situação?<select name="subject" required>
+                <option value="" disabled selected>Selecione o assunto</option>
+                <option>Planos de saúde: negativas e abusos</option>
+                <option>Medicamentos e tratamentos</option>
+                <option>Próteses, órteses e dispositivos médicos</option>
+                <option>Erro médico</option>
+                <option>LGPD para clínicas e hospitais</option>
+              </select></label
+            ><label class="consent"
+              ><input name="consent" type="checkbox" required /><span
+                >Autorizo o uso destes dados para receber o retorno da
+                equipe.</span
+              ></label
+            ><button class="button button-dark" type="submit">
+              <span>Solicitar contato</span
+              ><span class="button-arrow" aria-hidden="true">↗</span>
+            </button>
+            <p class="form-note">
+              Não envie documentos médicos por este formulário.
+            </p>
+            <p class="form-status" id="form-status" role="status" hidden></p>
+            <noscript
+              ><p>
+                Ative o JavaScript para utilizar o formulário de contato.
+              </p></noscript
+            >
+          </form>
+        </div>
+      </section>
+
+      <section class="feedback" aria-label="Compartilhe sua experiência">
+        <div class="container feedback-grid">
+          <div>
+            <h2>Já foi atendido pela nossa equipe?</h2>
+            <p>
+              Sua experiência nos ajuda a aprimorar a forma de acolher e
+              orientar.
+            </p>
+          </div>
+          <div class="feedback-action">
+            <button
+              class="button button-dark"
+              id="feedback-button"
+              type="button"
+            >
+              <span>Compartilhar experiência</span
+              ><span class="button-arrow" aria-hidden="true">↗</span>
+            </button>
+            <p id="feedback-status" role="status" hidden></p>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <div class="container footer-stack">
+        <div class="footer-top">
+          <a href="#inicio" class="footer-brand" aria-label="Voltar ao início"
+            ><img
+              src="assets/logo.webp"
+              width="200"
+              height="91"
+              alt="Jales & Jales — Advogados Associados"
+              loading="lazy"
+          /></a>
+          <nav aria-label="Navegação do rodapé">
+            <a href="#atuacao">Atuação</a><a href="#sobre">Sobre nós</a
+            ><a href="#como-funciona">Como funciona</a
+            ><a href="#duvidas">Dúvidas</a><a href="#contato">Contato</a>
+          </nav>
+        </div>
+        <div class="footer-divider"></div>
+        <div class="footer-bottom">
+          <p>
+            Jales & Jales · Advogados Associados<br />Conteúdo informativo. A
+            orientação jurídica depende das particularidades e dos documentos de
+            cada caso.
+          </p>
+          <p>Direito da Saúde<br />© 2026 Jales & Jales</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
