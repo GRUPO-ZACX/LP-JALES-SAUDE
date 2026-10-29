@@ -101,4 +101,51 @@
       message.textContent = "O canal de avaliações estará disponível em breve.";
     }
   });
+
+  // A linha conecta os centros das três etapas e anima uma única vez.
+  const process = document.querySelector(".process");
+  const timeline = process.querySelector(".steps");
+  function positionTimeline() {
+    const marks = timeline.querySelectorAll(".step-number");
+    const box = timeline.getBoundingClientRect();
+    const first = marks[0].getBoundingClientRect();
+    const last = marks[marks.length - 1].getBoundingClientRect();
+    const horizontal = matchMedia("(min-width:960px)").matches;
+    const x = first.left + first.width / 2 - box.left;
+    const y = first.top + first.height / 2 - box.top;
+    const length = horizontal
+      ? last.left + last.width / 2 - first.left - first.width / 2
+      : last.top + last.height / 2 - first.top - first.height / 2;
+    timeline.style.setProperty("--track-x", `${x}px`);
+    timeline.style.setProperty("--track-y", `${y}px`);
+    timeline.style.setProperty(
+      "--track-width",
+      horizontal ? `${length}px` : "2px",
+    );
+    timeline.style.setProperty(
+      "--track-height",
+      horizontal ? "2px" : `${length}px`,
+    );
+  }
+  positionTimeline();
+  document.fonts.ready.then(positionTimeline);
+  if ("ResizeObserver" in window)
+    new ResizeObserver(positionTimeline).observe(timeline);
+  if (
+    "IntersectionObserver" in window &&
+    !matchMedia("(prefers-reduced-motion:reduce)").matches
+  ) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          process.classList.add("timeline-visible");
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.3 },
+    );
+    observer.observe(timeline);
+  } else {
+    process.classList.add("timeline-visible");
+  }
 })();

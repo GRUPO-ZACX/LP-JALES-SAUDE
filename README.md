@@ -66,6 +66,7 @@ O arquivo `vercel.json` só é aplicado pela Vercel. O GitHub Pages serve os mes
 - O carrossel aceita toque, trackpad, foco por teclado e setas esquerda/direita.
 - O formulário usa validação nativa, consentimento obrigatório e mensagens acessíveis.
 - A página respeita a preferência por movimento reduzido.
+- Botões têm preenchimento lateral e rotação discreta da seta no hover/foco. A linha do tempo das etapas cresce uma única vez ao entrar em tela, horizontalmente no desktop e verticalmente no mobile.
 - Sem trackers, bibliotecas externas, fontes remotas ou animações pesadas.
 
 ## Créditos e licenças
