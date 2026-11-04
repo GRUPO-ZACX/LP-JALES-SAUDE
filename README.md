@@ -60,6 +60,8 @@ O arquivo `vercel.json` só é aplicado pela Vercel. O GitHub Pages serve os mes
 
 ## Comportamento e acessibilidade
 
+- Botão flutuante de WhatsApp no canto inferior direito, com balão branco “Converse com nossa equipe”. Usa o número de `config.js` e inclui o nome quando preenchido no formulário.
+
 - Os três cards ficam lado a lado no desktop; no mobile há rolagem horizontal com parte do próximo card aparente.
 - Menu mobile com Escape, estados `aria-expanded` e navegação por teclado.
 - Perguntas frequentes usam `details` e `summary` nativos, inclusive sem JavaScript.

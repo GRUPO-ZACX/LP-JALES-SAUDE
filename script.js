@@ -60,8 +60,24 @@
   const normalizeName = () => nameInput.value.trim().replace(/\s+/g, " ");
   const messageFor = (name) =>
     `Olá! Meu nome é ${name}. Gostaria de atendimento jurídico na área da saúde. Podemos conversar?`;
+  const floatingWhatsapp = document.querySelector("[data-whatsapp-link]");
+  function updateFloatingWhatsapp() {
+    const destination = String(config.whatsapp || "").replace(/\D/g, "");
+    if (!/^\d{10,15}$/.test(destination)) {
+      floatingWhatsapp.href = "#contato";
+      floatingWhatsapp.removeAttribute("target");
+      floatingWhatsapp.setAttribute("aria-label", "Converse com nossa equipe");
+      return;
+    }
+    const name = normalizeName();
+    const message = name.length >= 2 ? messageFor(name) :
+      "Olá! Gostaria de atendimento jurídico na área da saúde. Podemos conversar?";
+    floatingWhatsapp.href = `https://wa.me/${destination}?text=${encodeURIComponent(message)}`;
+  }
+  updateFloatingWhatsapp();
   nameInput.addEventListener("input", () => {
     nameInput.setCustomValidity("");
+    updateFloatingWhatsapp();
     status.hidden = true;
   });
   form.addEventListener("submit", (event) => {
