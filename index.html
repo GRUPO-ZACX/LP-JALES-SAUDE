@@ -9,8 +9,11 @@
         dataLayer.push(arguments);
       }
       gtag('js', new Date());
-      gtag('config', 'AW-11486541459');
+      gtag('config', 'AW-11486541459', { allow_ad_personalization_signals: false });
+      window.dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
     </script>
+    <!-- Google Tag Manager: compartilha a inicialização do dataLayer acima. -->
+    <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-WX56N6F5"></script>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#00292b" />

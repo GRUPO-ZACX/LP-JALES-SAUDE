@@ -74,9 +74,15 @@ O arquivo `vercel.json` só é aplicado pela Vercel. O GitHub Pages serve os mes
 
 ## Tag do Google Ads
 
-O `index.html` carrega `gtag.js` e inicializa a conta `AW-11486541459`, conforme o código fornecido. Não foi configurado nenhum evento de conversão específico.
+O `index.html` carrega `gtag.js` e inicializa a conta `AW-11486541459` com `allow_ad_personalization_signals: false`.
 
-A política de segurança em `vercel.json` permite os domínios necessários ao Google Ads, incluindo o domínio brasileiro. O script de inicialização inline está autorizado pelo seu hash SHA-256; se esse bloco for editado, atualize também o hash em `script-src`. Referência: [Google Ads com Content Security Policy](https://developers.google.com/tag-platform/security/guides/csp#google_ads).
+O contêiner Google Tag Manager `GTM-WX56N6F5` também é carregado uma única vez no `<head>`, compartilhando o mesmo `dataLayer` e a função `gtag`. O evento de inicialização `gtm.js` é enfileirado antes de carregar o contêiner. A tag do Google Ads e os eventos de WhatsApp existentes foram preservados.
+
+Em `script.js:3`, substitua `ROTULO_AQUI` na constante `GADS_CONVERSION` pelo rótulo real da conversão do Google Ads. Cada abertura de WhatsApp registra `conversion` e `generate_lead`: `formulario` no envio do formulário e `rodape` no link flutuante “Converse com nossa equipe”. Outros links de WhatsApp são capturados por delegação e aceitam uma origem específica em `data-whatsapp-origem`.
+
+Os contatos abrem em nova aba. Visitas com `utm_source=google` ou `gclid` gravam `origem_trafego=google` em `sessionStorage`. Nessa sessão, as mensagens recebem o prefixo “Olá! Vim pelo Google.”, preservando o texto original e o nome informado. Sem origem Google, a mensagem original é mantida. Bloqueios de armazenamento ou falhas da tag não interrompem o contato.
+
+A política de segurança em `vercel.json` permite os domínios necessários ao Google Ads, incluindo DoubleClick em `script-src` e `script-src-elem`, o domínio brasileiro e os domínios de medição adicionais solicitados. As permissões anteriores foram preservadas. O script de inicialização inline está autorizado pelo seu hash SHA-256; se esse bloco for editado, atualize também o hash em `script-src` e `script-src-elem`. Referência: [Google Ads com Content Security Policy](https://developers.google.com/tag-platform/security/guides/csp#google_ads).
 
 Depois de publicar os arquivos atualizados, use **Testar instalação** na conta do Google para confirmar a detecção no domínio de produção.
 

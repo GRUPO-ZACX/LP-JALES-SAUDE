@@ -1,5 +1,65 @@
 (() => {
   "use strict";
+  const GADS_CONVERSION = 'AW-11486541459/ROTULO_AQUI';
+
+  const trafficParams = new URLSearchParams(window.location.search);
+  let googleTraffic =
+    trafficParams.get("utm_source") === "google" || trafficParams.has("gclid");
+  try {
+    if (googleTraffic) sessionStorage.setItem("origem_trafego", "google");
+    googleTraffic = googleTraffic || sessionStorage.getItem("origem_trafego") === "google";
+  } catch {
+    // O contato continua funcionando quando o navegador bloqueia o armazenamento.
+  }
+
+  function trackWhatsAppConversion(origem) {
+    if (typeof window.gtag !== "function") return;
+    try {
+      window.gtag('event', 'conversion', { send_to: GADS_CONVERSION });
+      window.gtag('event', 'generate_lead', { origem: origem });
+    } catch {
+      // Uma falha de medição não pode impedir a abertura do WhatsApp.
+    }
+  }
+
+  function trafficMessage(message) {
+    const prefix = "Olá! Vim pelo Google.";
+    return googleTraffic && !message.startsWith(prefix)
+      ? `${prefix} ${message}`
+      : message;
+  }
+
+  function whatsappUrl(link) {
+    try {
+      const url = new URL(link.href, window.location.href);
+      return ["https:", "http:"].includes(url.protocol) &&
+        ["wa.me", "api.whatsapp.com"].includes(url.hostname) ? url : null;
+    } catch {
+      return null;
+    }
+  }
+
+  function prepareWhatsAppLink(link) {
+    const url = whatsappUrl(link);
+    if (!url) return false;
+    if (googleTraffic) url.searchParams.set("text", trafficMessage(url.searchParams.get("text") || ""));
+    link.href = url.href;
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+    return true;
+  }
+
+  function trackWhatsAppLink(event) {
+    if (event.type === "auxclick" && event.button !== 1) return;
+    const link = event.target instanceof Element ? event.target.closest("a[href]") : null;
+    if (!link || !prepareWhatsAppLink(link)) return;
+    const origem = link.hasAttribute("data-whatsapp-link") || link.closest("footer")
+      ? "rodape"
+      : link.dataset.whatsappOrigem || "link_whatsapp";
+    trackWhatsAppConversion(origem);
+  }
+  document.addEventListener("click", trackWhatsAppLink);
+  document.addEventListener("auxclick", trackWhatsAppLink);
   const config = window.JALES_CONFIG || {};
   const toggle = document.querySelector(".menu-toggle");
   const menu = document.getElementById("mobile-menu");
@@ -59,7 +119,7 @@
   const status = document.getElementById("form-status");
   const normalizeName = () => nameInput.value.trim().replace(/\s+/g, " ");
   const messageFor = (name) =>
-    `Olá! Meu nome é ${name}. Gostaria de atendimento jurídico na área da saúde. Podemos conversar?`;
+    trafficMessage(`Olá! Meu nome é ${name}. Gostaria de atendimento jurídico na área da saúde. Podemos conversar?`);
   const floatingWhatsapp = document.querySelector("[data-whatsapp-link]");
   function updateFloatingWhatsapp() {
     const destination = String(config.whatsapp || "").replace(/\D/g, "");
@@ -73,8 +133,10 @@
     const message = name.length >= 2 ? messageFor(name) :
       "Olá! Gostaria de atendimento jurídico na área da saúde. Podemos conversar?";
     floatingWhatsapp.href = `https://wa.me/${destination}?text=${encodeURIComponent(message)}`;
+    prepareWhatsAppLink(floatingWhatsapp);
   }
   updateFloatingWhatsapp();
+  document.querySelectorAll("a[href]").forEach(prepareWhatsAppLink);
   nameInput.addEventListener("input", () => {
     nameInput.setCustomValidity("");
     updateFloatingWhatsapp();
@@ -97,7 +159,8 @@
     const url = `https://wa.me/${destination}?text=${encodeURIComponent(messageFor(name))}`;
     status.textContent =
       "Abrindo o WhatsApp com sua mensagem. Confira o texto e toque em enviar para iniciar a conversa.";
-    window.location.assign(url);
+    trackWhatsAppConversion('formulario');
+    window.open(url, "_blank", "noopener,noreferrer");
   });
   document.getElementById("feedback-button").addEventListener("click", () => {
     let url;
