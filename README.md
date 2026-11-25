@@ -70,7 +70,15 @@ O arquivo `vercel.json` só é aplicado pela Vercel. O GitHub Pages serve os mes
 - Os retratos alternam nos mesmos enquadramentos a cada 6 segundos, com transição suave e suspensão fora da tela. A troca automática é desativada quando há preferência por movimento reduzido.
 - A página respeita a preferência por movimento reduzido.
 - Botões têm preenchimento lateral e rotação discreta da seta no hover/foco. A linha do tempo das etapas cresce uma única vez ao entrar em tela, horizontalmente no desktop e verticalmente no mobile.
-- Sem trackers, bibliotecas externas, fontes remotas ou animações pesadas.
+- Tag do Google Ads `AW-11486541459` instalada uma única vez no início do `<head>`. Fontes e demais recursos da interface continuam locais.
+
+## Tag do Google Ads
+
+O `index.html` carrega `gtag.js` e inicializa a conta `AW-11486541459`, conforme o código fornecido. Não foi configurado nenhum evento de conversão específico.
+
+A política de segurança em `vercel.json` permite os domínios necessários ao Google Ads, incluindo o domínio brasileiro. O script de inicialização inline está autorizado pelo seu hash SHA-256; se esse bloco for editado, atualize também o hash em `script-src`. Referência: [Google Ads com Content Security Policy](https://developers.google.com/tag-platform/security/guides/csp#google_ads).
+
+Depois de publicar os arquivos atualizados, use **Testar instalação** na conta do Google para confirmar a detecção no domínio de produção.
 
 ## Créditos e licenças
 
@@ -82,7 +90,7 @@ Não foram publicados dados fictícios de contato, endereço ou registro profiss
 
 Conferência visual com os layouts aprovados de 1440 px e 390 px. Testes de navegação, menu mobile, carrossel, perguntas frequentes e formulário em Chromium nas larguras 320, 375, 390, 768, 1024, 1440 e 1920 px. Compatibilidade de menu, rolagem horizontal e FAQ também verificada em WebKit nas larguras 390 e 1440 px.
 
-Não houve imagens ausentes, erros de JavaScript ou requisições externas para renderizar a página. O canal de avaliações permanece sem destino. O redirecionamento com mensagem personalizada foi verificado com interceptação local, sem enviar mensagens externas.
+Na validação visual original, não houve imagens ausentes ou erros de JavaScript. Após a instalação da tag, o Google Ads passa a fazer requisições externas de medição. O canal de avaliações permanece sem destino. O redirecionamento com mensagem personalizada foi verificado com interceptação local, sem enviar mensagens externas.
 
 Na última revisão, os indicadores e o alinhamento das etapas foram conferidos em Chromium e WebKit nas larguras 320, 390 e 1440 px. A troca dos retratos e o movimento reduzido também foram verificados.
 
